@@ -1,0 +1,424 @@
+{
+  "type": "page",
+  "title": "任务列表",
+  "remark": "所有任务列表",
+  "toolbar": [],
+  "body": {
+    "type": "crud",
+    "name": "crud",
+    "api": "/api/v2/crud/table",
+    "draggable": true,
+    "syncLocation": false,
+    "filterTogglable": true,
+    "keepItemSelectionOnPageChange": true,
+    "labelTpl": "${name}",
+    "filter": {
+      "title": "",
+      "submitText": "",
+      "controls": [
+        {
+          "type": "group",
+          "className": "m-b-none",
+          "mode": "horizontal",
+          "controls": [
+            {
+              "type": "text",
+              "name": "id",
+              "label": "ID：",
+              "placeholder": "请输入"
+            },
+            {
+              "type": "text",
+              "name": "name",
+              "label": "任务名：",
+              "placeholder": "请输入"
+            },
+            {
+              "type": "text",
+              "name": "retry",
+              "label": "任务重试次数：",
+              "placeholder": "请输入"
+            },
+            {
+              "type": "button-toolbar",
+              "label": false,
+              "className": "text-right",
+              "buttons": [
+                {
+                  "type": "submit",
+                  "primary": true,
+                  "label": "查询"
+                },
+                {
+                  "type": "reset",
+                  "label": "重置"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "bulkActions": [
+      {
+        "label": "批量删除",
+        "actionType": "ajax",
+        "api": "delete:https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample/${ids|raw}",
+        "confirmText": "确定要删除选中数据?"
+      },
+      {
+        "label": "批量修改",
+        "actionType": "dialog",
+        "dialog": {
+          "title": "批量编辑",
+          "name": "sample-bulk-edit",
+          "body": {
+            "type": "form",
+            "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample/bulkUpdate2",
+            "controls": [
+              {
+                "type": "hidden",
+                "name": "ids"
+              },
+              {
+                "type": "text",
+                "name": "engine",
+                "label": "Engine"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "quickSaveApi": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample/bulkUpdate",
+    "quickSaveItemApi": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample/$id",
+    "headerToolbar": [
+      "drag-toggler",
+      {
+        "type": "button",
+        "actionType": "dialog",
+        "label": "新增任务",
+        "icon": "fa fa-plus pull-left",
+        "primary": true,
+        "dialog": {
+          "title": "新增任务",
+          "body": {
+            "type": "form",
+            "name": "sample-edit-form",
+            "api": "post:https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample",
+            "controls": [
+              {
+                "type": "text",
+                "name": "name",
+                "label": "任务名",
+                "required": true
+              },
+              {
+                "type": "textarea",
+                "name": "description",
+                "label": "描述"
+              },
+              {
+                "type": "number",
+                "name": "retry",
+                "label": "任务重试次数",
+                "required": true
+              },
+              {
+                "type": "select",
+                "name": "status",
+                "label": "任务状态",
+                "options": [
+                  {
+                    "label": "成功",
+                    "value": "success"
+                  },
+                  {
+                    "label": "运行中",
+                    "value": "pending"
+                  },
+                  {
+                    "label": "失败",
+                    "value": "fail"
+                  },
+                  {
+                    "label": "排队中",
+                    "value": "queue"
+                  },
+                  {
+                    "label": "调度中",
+                    "value": "schedule"
+                  }
+                ]
+              },
+              {
+                "type": "datetime",
+                "name": "createdAt",
+                "label": "创建时间",
+                "format": "x"
+              }
+            ]
+          }
+        }
+      },
+      "bulkActions",
+      {
+        "type": "filter-toggler",
+        "align": "right"
+      },
+      {
+        "type": "columns-toggler",
+        "align": "right"
+      },
+
+      {
+        "label": "",
+        "icon": "iconfont icon-refresh",
+        "type": "button",
+        "actionType": "reload",
+        "target": "crud",
+        "align": "right"
+      }
+    ],
+    "footerToolbar": [
+      "statistics",
+      {
+        "type": "pagination",
+        "showPageInput": true,
+        "align": "right"
+      },
+      {
+        "type": "switch-per-page",
+        "align": "right"
+      }
+    ],
+    "columns": [
+      {
+        "label": "ID",
+        "name": "id",
+        "width": 20
+      },
+      {
+        "name": "name",
+        "sortable": true,
+        "label": "任务名",
+        "searchable": true,
+        "type": "container",
+        "body": [
+          {
+            "type": "button",
+            "label": "${name}",
+            "actionType": "drawer",
+            "level": "link",
+            "drawer": {
+              "title": "详情",
+              "closeOnOutside": true,
+              "body": {
+                "type": "form",
+                "controls": [
+                  {
+                    "type": "static",
+                    "name": "id",
+                    "label": "ID"
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "type": "static",
+                    "name": "name",
+                    "label": "任务名"
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "type": "static",
+                    "name": "description",
+                    "label": "描述"
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "type": "static",
+                    "name": "retry",
+                    "label": "重试次数"
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "type": "static-status",
+                    "name": "status",
+                    "label": "任务状态"
+                  },
+                  {
+                    "type": "divider"
+                  },
+                  {
+                    "type": "static-datetime",
+                    "name": "createdAt",
+                    "label": "创建时间"
+                  }
+                ]
+              },
+              "actions": []
+            }
+          }
+        ]
+      },
+      {
+        "name": "description",
+        "label": "任务描述",
+        "type": "tpl",
+        "tpl": "${description|truncate:10:...}",
+        "popOver": {
+          "body": {
+            "type": "tpl",
+            "tpl": "${description}"
+          }
+        }
+      },
+      {
+        "name": "retry",
+        "label": "重试次数",
+        "sortable": true,
+        "type": "text"
+      },
+      {
+        "name": "priority",
+        "label": "优先级",
+        "sortable": true,
+        "type": "mapping",
+        "map": {
+          "1": "<span class=\"label label-info\">低</span>",
+          "2": "<span class=\"label label-warning\">中</span>",
+          "3": "<span class=\"label label-danger\">高</span>"
+        }
+      },
+      {
+        "name": "status",
+        "label": "任务状态",
+        "type": "status",
+        "filterable": {
+          "options": [
+            {
+              "label": "成功",
+              "value": "success"
+            },
+            {
+              "label": "运行中",
+              "value": "pending"
+            },
+            {
+              "label": "失败",
+              "value": "fail"
+            },
+            {
+              "label": "排队中",
+              "value": "queue"
+            },
+            {
+              "label": "调度中",
+              "value": "schedule"
+            }
+          ]
+        }
+      },
+      {
+        "type": "datetime",
+        "name": "createdAt",
+        "label": "创建时间",
+        "valueFormat": "x"
+      },
+      {
+        "type": "operation",
+        "label": "操作",
+        "buttons": [
+          {
+            "type": "button",
+            "label": "编辑",
+            "level": "link",
+            "actionType": "dialog",
+            "dialog": {
+              "title": "编辑",
+              "size": "md",
+              "body": {
+                "type": "form",
+                "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample/$id",
+                "controls": [
+                  {
+                    "type": "static",
+                    "name": "id",
+                    "label": "ID"
+                  },
+                  {
+                    "type": "text",
+                    "name": "name",
+                    "label": "任务名",
+                    "required": true
+                  },
+                  {
+                    "type": "textarea",
+                    "name": "description",
+                    "label": "描述"
+                  },
+                  {
+                    "type": "text",
+                    "name": "retry",
+                    "label": "任务重试次数",
+                    "required": true
+                  },
+                  {
+                    "type": "select",
+                    "name": "status",
+                    "label": "任务状态",
+                    "options": [
+                      {
+                        "label": "成功",
+                        "value": "success"
+                      },
+                      {
+                        "label": "运行中",
+                        "value": "pending"
+                      },
+                      {
+                        "label": "失败",
+                        "value": "fail"
+                      },
+                      {
+                        "label": "排队中",
+                        "value": "queue"
+                      },
+                      {
+                        "label": "调度中",
+                        "value": "schedule"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "datetime",
+                    "name": "createdAt",
+                    "label": "创建时间",
+                    "format": "x"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "type": "button",
+            "actionType": "ajax",
+            "label": "删除",
+            "level": "link",
+            "className": "text-danger",
+            "confirmText": "确认删除任务<b>「${name}」</b>?",
+            "api": "delete:https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample/$id"
+          }
+        ],
+        "toggled": true
+      }
+    ]
+  }
+}

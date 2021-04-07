@@ -1,0 +1,127 @@
+{
+  "type": "page",
+  "title": "表单向导",
+  "subTitle": "可以通过表单向导，将一个超长的表单页面拆分成多个步骤，一步一步指引用户完成。",
+  "body": [
+    {
+      "type": "wizard",
+      "mode": "horizontal",
+      "actionFinishLabel": "确认",
+      "api": "/api/saveWizard",
+      "steps": [
+        {
+          "title": "填写活动信息",
+          "mode": "horizontal",
+          "controls": [
+            {
+              "type": "text",
+              "name": "title",
+              "label": "活动标题",
+              "required": true,
+              "value": "百度智能云 2021 开年盛典"
+            },
+
+            {
+              "type": "image",
+              "name": "logo",
+              "label": "活动 Logo",
+              "value": "https://dss0.bdstatic.com/-0U0bnSm1A5BphGlnYG/tam-ogel/a919cd5bc7ebdc30d5ea1d7e632323dc_121_121.png"
+            },
+
+            {
+              "type": "date",
+              "name": "date",
+              "label": "举办时间",
+              "value": "now"
+            },
+
+            {
+              "type": "text",
+              "name": "location",
+              "label": "活动地点",
+              "value": "北京市海淀区上地十街10号"
+            },
+
+            {
+              "type": "number",
+              "name": "num",
+              "label": "参与人数",
+              "value": 100
+            }
+          ]
+        },
+
+        {
+          "title": "填写赞助商信息",
+          "mode": "horizontal",
+          "controls": [
+            {
+              "type": "text",
+              "name": "company",
+              "label": "公司名称",
+              "required": true,
+              "value": "北京百度网讯科技有限公司"
+            },
+
+            {
+              "type": "text",
+              "name": "money",
+              "label": "赞助金额",
+              "addOn": {
+                "type": "text",
+                "label": "￥"
+              },
+              "value": "1000"
+            }
+          ]
+        },
+
+        {
+          "title": "确认",
+          "mode": "horizontal",
+          "controls": [
+            {
+              "type": "static",
+              "name": "company",
+              "label": "活动标题"
+            },
+            {
+              "type": "static-image",
+              "name": "logo",
+              "label": "活动 Logo"
+            },
+            {
+              "type": "static-date",
+              "name": "date",
+              "label": "举办时间"
+            },
+            {
+              "type": "static",
+              "name": "location",
+              "label": "举办地点"
+            },
+            {
+              "type": "static",
+              "name": "num",
+              "label": "参与人数"
+            },
+            {
+              "type": "divider"
+            },
+            {
+              "type": "static",
+              "name": "company",
+              "label": "公司名称"
+            },
+            {
+              "type": "static-tpl",
+              "name": "money",
+              "label": "赞助金额",
+              "tpl": "${money}￥"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

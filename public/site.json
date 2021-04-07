@@ -1,0 +1,81 @@
+{
+  "status": 0,
+  "msg": "",
+  "data": {
+    "pages": [
+      {
+        "label": "Home",
+        "url": "/",
+        "redirect": "/crud/table"
+      },
+      {
+        "label": "示例",
+        "children": [
+          {
+            "label": "Dashboard",
+            "url": "/dashbord",
+            "rewrite": "/dashbord/chart",
+            "children": [
+              {
+                "label": "分析页",
+                "url": "/dashbord/chart",
+                "schemaApi": "get:/pages/dashboard-chart.json"
+              }
+            ]
+          },
+          {
+            "label": "列表页",
+            "url": "/crud",
+            "rewrite": "/crud/table",
+            "children": [
+              {
+                "label": "查询列表",
+                "url": "/crud/table",
+                "schemaApi": "get:/pages/crud-table.json"
+              },
+              {
+                "label": "卡片列表",
+                "url": "/crud/card",
+                "schemaApi": "get:/pages/crud-card.json"
+              }
+            ]
+          },
+          {
+            "label": "表单页",
+            "url": "/form",
+            "rewrite": "/form/basic",
+            "children": [
+              {
+                "label": "普通表单",
+                "url": "/form/basic",
+                "schemaApi": "get:/pages/form-basic.json"
+              },
+              {
+                "label": "高级表单",
+                "url": "/form/advanced",
+                "schemaApi": "get:/pages/form-advanced.json"
+              },
+              {
+                "label": "分步表单",
+                "url": "/form/wizard",
+                "schemaApi": "get:/pages/form-wizard.json"
+              }
+            ]
+          },
+          {
+            "label": "详情页",
+            "url": "/detail",
+            "rewrite": "/detail/basic",
+            "children": [
+              {
+                "label": "普通详情",
+                "url": "/detail/basic",
+                "schemaApi": "get:/pages/detail-basic.json"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "$schema": "https://houtai.baidu.com/v2/schemas/page.json#",
+  "type": "page",
+  "title": "增删改查示例",
+  "remark": "bla bla bla",
+  "body": {
+    "type": "crud",
+    "api": "/api/v2/crud/card",
+    "syncLocation": false,
+    "draggable": false,
+    "mode": "cards",
+    "headerToolbar": [],
+    "footerToolbar": [],
+    "filter": {
+      "title": "",
+      "submitText": "",
+      "submitOnChange": true,
+      "mode": "horizontal",
+      "controls": [
+        {
+          "type": "list",
+          "name": "tag",
+          "label": "标签：",
+          "multiple": true,
+          "checkAll": true,
+          "options": [
+            {
+              "label": "报刊杂志",
+              "value": 1
+            },
+            {
+              "label": "财务",
+              "value": 2
+            },
+            {
+              "label": "参考资料",
+              "value": 3
+            },
+            {
+              "label": "导航",
+              "value": 4
+            },
+            {
+              "label": "儿童",
+              "value": 5
+            },
+            {
+              "label": "工具",
+              "value": 6
+            },
+            {
+              "label": "购物",
+              "value": 7
+            },
+            {
+              "label": "健康健美",
+              "value": 8
+            },
+            {
+              "label": "教育",
+              "value": 9
+            },
+            {
+              "label": "旅游",
+              "value": 10
+            },
+            {
+              "label": "美食佳饮",
+              "value": 11
+            },
+            {
+              "label": "软件开发工具",
+              "value": 12
+            },
+            {
+              "label": "效率",
+              "value": 13
+            }
+          ]
+        },
+        {
+          "type": "divider"
+        },
+        {
+          "type": "group",
+          "label": "其他条件：",
+          "controls": [
+            {
+              "type": "select",
+              "name": "id",
+              "mode": "inline",
+              "label": "平台：",
+              "size": "md",
+              "placeholder": "不限",
+              "options": [
+                {
+                  "label": "PC",
+                  "value": 1
+                },
+                {
+                  "label": "Mobile",
+                  "value": 2
+                }
+              ]
+            },
+            {
+              "type": "select",
+              "name": "name",
+              "label": "类型：",
+              "mode": "inline",
+              "size": "md",
+              "placeholder": "不限",
+              "options": [
+                {
+                  "label": "APP",
+                  "value": 1
+                },
+                {
+                  "label": "游戏",
+                  "value": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "card": {
+      "header": {
+        "title": "$title",
+        "subTitle": "$subDescription",
+        "subTitlePlaceholder": "暂无说明",
+        "avatar": "<%= data.avatar || \"https://internal-amis-res.cdn.bcebos.com/images/2019-12/1575350573496/4873dbfaf6a5.png\" %>",
+        "avatarClassName": "pull-left thumb b-3x m-r"
+      },
+      "body": [],
+      "actions": [
+        {
+          "type": "button",
+          "icon": "iconfont icon-like"
+        },
+        {
+          "type": "button",
+          "icon": "iconfont icon-download-alt"
+        },
+        {
+          "type": "button",
+          "icon": "iconfont icon-link"
+        },
+        {
+          "type": "button",
+          "icon": "fa fa-ellipsis-h"
+        }
+      ]
+    }
+  }
+}

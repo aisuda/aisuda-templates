@@ -1,0 +1,145 @@
+{
+  "type": "page",
+  "title": "Dashboard",
+  "body": [
+    {
+      "type": "panel",
+      "body": [
+        {
+          "type": "grid",
+          "columns": [
+            {
+              "md": 4,
+              "type": "chart",
+              "api": "/api/v2/dashboard/chart1"
+            },
+            {
+              "md": 4,
+              "type": "chart",
+              "api": "/api/v2/dashboard/chart2"
+            },
+            {
+              "md": 4,
+              "type": "chart",
+              "api": "/api/v2/dashboard/chart3"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "tabs",
+      "toolbar": [
+        {
+          "type": "form",
+          "title": "",
+          "wrapWithPanel": false,
+          "controls": [
+            {
+              "type": "date-range",
+              "name": "select",
+              "className": "m-b-none",
+              "value": "1616860800,1616947199",
+              "label": false
+            }
+          ]
+        }
+      ],
+      "tabs": [
+        {
+          "title": "蒸发量 / 降水量",
+          "tab": {
+            "type": "chart",
+            "api": "/api/v2/dashboard/chart4"
+          }
+        },
+        {
+          "title": "雨量 / 流量",
+          "tab": {
+            "type": "chart",
+            "api": "/api/v2/dashboard/chart5"
+          }
+        }
+      ]
+    },
+
+    {
+      "type": "grid",
+      "columns": [
+        {
+          "md": 6,
+          "type": "panel",
+          "title": "",
+          "body": [
+            {
+              "type": "crud",
+              "api": "/api/v2/dashboard/table",
+              "affixHeader": false,
+              "bodyClassName": "m-b-sm",
+              "defaultParams": {
+                "perPage": 5
+              },
+              "syncLocation": false,
+              "filterTogglable": false,
+              "headerToolbar": [],
+              "footerToolbar": [
+                {
+                  "type": "pagination",
+                  "showPageInput": false,
+                  "align": "right"
+                }
+              ],
+              "columns": [
+                {
+                  "label": "排名",
+                  "name": "index"
+                },
+                {
+                  "name": "keyword",
+                  "label": "搜索关键字",
+                  "type": "link"
+                },
+                {
+                  "name": "count",
+                  "label": "用户数",
+                  "sortable": true
+                },
+                {
+                  "name": "range",
+                  "label": "周涨幅",
+                  "sortable": true,
+                  "type": "tpl",
+                  "tpl": "${range}%"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "md": 6,
+          "type": "panel",
+          "title": "",
+          "body": [
+            {
+              "type": "chart",
+              "api": "/api/v2/dashboard/chart6"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "panel",
+      "title": "",
+      "body": [
+        {
+          "type": "chart",
+          "height": 800,
+          "api": "/api/v2/dashboard/chart7"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "name": "简单 CRUD",
+    "description": "",
+    "tags": ["通用"],
+    "schemaPath": "pages/crud-table.json"
+  },
+  {
+    "name": "简单表单",
+    "description": "",
+    "tags": ["通用"],
+    "schemaPath": "pages/form-basic.json"
+  }
+]

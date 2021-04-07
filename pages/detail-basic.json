@@ -1,0 +1,212 @@
+{
+  "type": "page",
+  "title": "基础详情页",
+  "toolbar": [
+    {
+      "actionType": "reload",
+      "icon": "iconfont icon-refresh",
+      "target": "form",
+      "type": "button",
+      "className": "pull-right"
+    }
+  ],
+  "body": [
+    {
+      "type": "form",
+      "name": "form",
+      "mode": "horizontal",
+      "title": "",
+      "initApi": "/api/v2/detail/basic",
+      "actions": [],
+      "controls": [
+        {
+          "type": "fieldSet",
+          "title": "用户信息",
+          "controls": [
+            {
+              "type": "group",
+              "mode": "horizontal",
+              "controls": [
+                {
+                  "type": "static",
+                  "name": "userInfo.name",
+                  "label": "用户姓名："
+                },
+                {
+                  "type": "static-tpl",
+                  "name": "userInfo.tel",
+                  "label": "手机号：",
+                  "tpl": "<a href=\"tel:${userInfo.tel}\">${userInfo.tel}</a>",
+                  "copyable": true
+                },
+                {
+                  "type": "static-tpl",
+                  "name": "userInfo.email",
+                  "label": "邮箱：",
+                  "tpl": "<a href=\"mailto:${userInfo.tel}\">${userInfo.email}</a>",
+                  "copyable": true
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "mode": "horizontal",
+              "controls": [
+                {
+                  "type": "static",
+                  "name": "userInfo.department",
+                  "label": "部门："
+                },
+                {
+                  "type": "static",
+                  "name": "userInfo.remark",
+                  "label": "备注："
+                },
+                {
+                  "type": "hidden"
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "type": "fieldSet",
+          "title": "任务详情",
+          "controls": [
+            {
+              "type": "group",
+              "mode": "horizontal",
+              "controls": [
+                {
+                  "type": "static",
+                  "name": "job.jobNo",
+                  "label": "单号："
+                },
+                {
+                  "type": "static-status",
+                  "name": "job.status",
+                  "label": "状态："
+                },
+                {
+                  "type": "static-datetime",
+                  "valueFormat": "x",
+                  "format": "YYYY年MM月DD日 HH时mm分ss秒",
+                  "name": "job.createdAt",
+                  "label": "创建时间："
+                }
+              ]
+            },
+            {
+              "type": "static",
+              "name": "job.childNo",
+              "label": "子任务数："
+            }
+          ]
+        },
+
+        {
+          "type": "fieldSet",
+          "title": "子任务列表",
+          "controls": [
+            {
+              "type": "table",
+              "label": false,
+              "columnsTogglable": false,
+              "name": "subJobs",
+              "columns": [
+                {
+                  "type": "tpl",
+                  "label": "任务单号",
+                  "tpl": "<a href=\"http://www.baidu.com\" target=\"_blank\">${id}</a>"
+                },
+                {
+                  "label": "任务名称",
+                  "name": "name"
+                },
+                {
+                  "label": "创建时间",
+                  "name": "createdAt",
+                  "type": "datetime",
+                  "valueFormat": "x"
+                },
+                {
+                  "label": "单次耗时 (时)",
+                  "name": "per"
+                },
+                {
+                  "label": "运行次数",
+                  "name": "count"
+                },
+                {
+                  "label": "耗时 (时)",
+                  "name": "consuming"
+                }
+              ],
+              "affixRow": [
+                {
+                  "type": "text",
+                  "text": "总计",
+                  "colSpan": 4
+                },
+                {
+                  "type": "tpl",
+                  "tpl": "${items|pick:count|sum}"
+                },
+                {
+                  "type": "tpl",
+                  "tpl": "${items|pick:consuming|sum}"
+                }
+              ]
+            }
+          ]
+        },
+
+        {
+          "type": "fieldSet",
+          "title": "任务进度",
+          "controls": [
+            {
+              "type": "table",
+              "label": false,
+              "columnsTogglable": false,
+              "name": "jobProgress",
+              "columns": [
+                {
+                  "label": "时间",
+                  "name": "time",
+                  "type": "datetime",
+                  "valueFormat": "x"
+                },
+                {
+                  "label": "当前进度",
+                  "name": "rate"
+                },
+                {
+                  "type": "status",
+                  "label": "状态",
+                  "name": "status",
+                  "labelMap": {
+                    "success": "成功",
+                    "pending": "进行中",
+                    "fail": "失败",
+                    "queue": "排队中",
+                    "schedule": "调度中"
+                  }
+                },
+                {
+                  "label": "操作ID",
+                  "name": "updatedBy"
+                },
+                {
+                  "label": "耗时",
+                  "name": "cost"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
