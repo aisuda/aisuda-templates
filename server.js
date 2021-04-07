@@ -6,8 +6,6 @@ const bodyParser = require('body-parser');
 const logger = require('morgan');
 const {createProxyMiddleware} = require('http-proxy-middleware');
 
-const {HOST = '', PORT = '3300'} = process.env;
-
 const app = express();
 
 app.set('port', process.env.PORT || 3000);
