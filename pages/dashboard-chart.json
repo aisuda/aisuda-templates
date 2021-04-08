@@ -11,17 +11,17 @@
             {
               "md": 4,
               "type": "chart",
-              "api": "/api/v2/dashboard/chart1"
+              "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/dashboard/chart1"
             },
             {
               "md": 4,
               "type": "chart",
-              "api": "/api/v2/dashboard/chart2"
+              "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/dashboard/chart2"
             },
             {
               "md": 4,
               "type": "chart",
-              "api": "/api/v2/dashboard/chart3"
+              "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/dashboard/chart3"
             }
           ]
         }
@@ -51,14 +51,14 @@
           "title": "蒸发量 / 降水量",
           "tab": {
             "type": "chart",
-            "api": "/api/v2/dashboard/chart4"
+            "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/dashboard/chart4"
           }
         },
         {
           "title": "雨量 / 流量",
           "tab": {
             "type": "chart",
-            "api": "/api/v2/dashboard/chart5"
+            "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/dashboard/chart5"
           }
         }
       ]
@@ -74,7 +74,7 @@
           "body": [
             {
               "type": "crud",
-              "api": "/api/v2/dashboard/table",
+              "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/dashboard/table",
               "affixHeader": false,
               "bodyClassName": "m-b-sm",
               "defaultParams": {
@@ -123,7 +123,7 @@
           "body": [
             {
               "type": "chart",
-              "api": "/api/v2/dashboard/chart6"
+              "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/dashboard/chart6"
             }
           ]
         }
@@ -137,7 +137,7 @@
         {
           "type": "chart",
           "height": 800,
-          "api": "/api/v2/dashboard/chart7"
+          "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/dashboard/chart7"
         }
       ]
     }

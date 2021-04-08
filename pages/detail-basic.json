@@ -16,7 +16,8 @@
       "name": "form",
       "mode": "horizontal",
       "title": "",
-      "initApi": "/api/v2/detail/basic",
+      "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/form/saveForm",
+      "initApi": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/detail/basic",
       "actions": [],
       "controls": [
         {

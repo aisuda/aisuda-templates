@@ -8,7 +8,7 @@
       "mode": "horizontal",
       "title": "基础表单",
       "affixFooter": true,
-      "api": "/api/form/saveForm",
+      "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/form/saveForm",
       "controls": [
         {
           "label": " 标题",

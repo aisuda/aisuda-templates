@@ -12,4 +12,9 @@
 npm i
 # 打开服务
 npm start
+
+# 生成压缩包
+npm run build
 ```
+
+生成压缩包 `templates.zip` 后，在平台超管界面的页面模板内，导入该文件
