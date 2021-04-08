@@ -139,7 +139,7 @@
         "title": "$title",
         "subTitle": "$subDescription",
         "subTitlePlaceholder": "暂无说明",
-        "avatar": "<%= data.avatar || \"https://internal-amis-res.cdn.bcebos.com/images/2019-12/1575350573496/4873dbfaf6a5.png\" %>",
+        "avatar": "${avatar}",
         "avatarClassName": "pull-left thumb b-3x m-r"
       },
       "body": [],
