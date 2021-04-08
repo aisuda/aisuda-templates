@@ -92,25 +92,40 @@
               ],
               "columns": [
                 {
-                  "label": "排名",
-                  "name": "index"
-                },
-                {
-                  "name": "keyword",
-                  "label": "搜索关键字",
+                  "label": "卡片名",
+                  "name": "name",
                   "type": "link"
                 },
                 {
-                  "name": "count",
-                  "label": "用户数",
+                  "name": "status",
+                  "label": "状态",
+                  "filterable": {
+                    "options": [
+                      {
+                        "label": "新建",
+                        "value": "新建"
+                      },
+                      {
+                        "label": "已完成",
+                        "value": "已完成"
+                      },
+                      {
+                        "label": "开发中",
+                        "value": "开发中"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "name": "priority",
+                  "label": "优先级",
                   "sortable": true
                 },
                 {
-                  "name": "range",
-                  "label": "周涨幅",
-                  "sortable": true,
-                  "type": "tpl",
-                  "tpl": "${range}%"
+                  "name": "createdAt",
+                  "label": "分派时间",
+                  "type": "datetime",
+                  "valueFormat": "x"
                 }
               ]
             }
