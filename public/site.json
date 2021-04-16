@@ -14,7 +14,7 @@
           {
             "label": "Dashboard",
             "url": "/dashbord",
-            "rewrite": "/dashbord/chart",
+            "redirect": "/dashbord/chart",
             "children": [
               {
                 "label": "分析页",
@@ -26,7 +26,7 @@
           {
             "label": "列表页",
             "url": "/crud",
-            "rewrite": "/crud/table",
+            "redirect": "/crud/table",
             "children": [
               {
                 "label": "查询列表",
@@ -43,7 +43,7 @@
           {
             "label": "表单页",
             "url": "/form",
-            "rewrite": "/form/basic",
+            "redirect": "/form/basic",
             "children": [
               {
                 "label": "普通表单",
@@ -65,7 +65,7 @@
           {
             "label": "详情页",
             "url": "/detail",
-            "rewrite": "/detail/basic",
+            "redirect": "/detail/basic",
             "children": [
               {
                 "label": "普通详情",
