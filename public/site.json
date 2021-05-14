@@ -71,6 +71,11 @@
                 "label": "普通详情",
                 "url": "/detail/basic",
                 "schemaApi": "get:/pages/detail-basic.json"
+              },
+              {
+                "label": "图表详情",
+                "url": "/detail/chart",
+                "schemaApi": "get:/pages/detail-chart.json"
               }
             ]
           }

@@ -1,0 +1,568 @@
+{
+  "type": "page",
+  "title": "",
+  "body": [
+    {
+      "type": "panel",
+      "title": "",
+      "body": [
+        {
+          "type": "hbox",
+          "columns": [
+            {
+              "type": "service",
+              "name": "mainChart",
+              "api": {
+                "method": "get",
+                "url": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/chart/sample?month=${month}&range=${range}&series=${series}",
+                "sendOn": "this.range && this.series && this.month"
+              },
+              "body": [
+                {
+                  "type": "container",
+                  "bodyClassName": "flex flex-row justify-between items-center",
+                  "body": [
+                    {
+                      "type": "tpl",
+                      "inline": false,
+                      "tpl": "<span class=\"text-loud text-base\">费用趋势</span> <span class=\"text-muted text-sm\">单位：元</span>"
+                    },
+                    {
+                      "type": "form",
+                      "wrapWithPanel": false,
+                      "mode": "inline",
+                      "submitOnInit": true,
+                      "submitOnChange": true,
+                      "target": "mainChart",
+                      "controls": [
+                        {
+                          "type": "button-group",
+                          "name": "range",
+                          "value": "hafe-year",
+                          "className": "m-b-none",
+                          "options": [
+                            {
+                              "label": "近半年",
+                              "value": "hafe-year"
+                            },
+                            {
+                              "label": "近一年",
+                              "value": "year"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "hidden",
+                          "name": "seriesLabel"
+                        },
+                        {
+                          "type": "select",
+                          "className": "m-b-none",
+                          "name": "series",
+                          "value": "sumary",
+                          "options": [
+                            {
+                              "label": "总费用",
+                              "value": "sumary"
+                            },
+                            {
+                              "label": "百度云",
+                              "value": "baidu"
+                            },
+                            {
+                              "label": "金山云",
+                              "value": "ksy"
+                            },
+                            {
+                              "label": "腾讯云",
+                              "value": "tengcent"
+                            },
+                            {
+                              "label": "阿里云",
+                              "value": "aliyun"
+                            },
+                            {
+                              "label": "华为云",
+                              "value": "huawei"
+                            }
+                          ],
+                          "checkAll": false,
+                          "autoFill": {
+                            "seriesLabel": "${label}"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "chart",
+                  "trackExpression": "${summary_cost|json}",
+                  "config": {
+                    "legend": {
+                      "show": false
+                    },
+                    "grid": {
+                      "top": 30,
+                      "bottom": 30,
+                      "left": 80,
+                      "right": 0
+                    },
+                    "tooltip": {},
+                    "dataset": {
+                      "dimensions": ["timestamp", "cost"],
+                      "source": "${summary_cost|default:[]}"
+                    },
+                    "xAxis": {
+                      "type": "category",
+                      "axisTick": {
+                        "show": false
+                      },
+                      "axisLabel": {
+                        "color": "#999"
+                      },
+                      "axisLine": {
+                        "lineStyle": {
+                          "color": "#999",
+                          "width": 2
+                        }
+                      }
+                    },
+                    "yAxis": {
+                      "type": "value",
+                      "axisLabel": {
+                        "color": "#999",
+                        "align": "right",
+                        "width": 200
+                      },
+                      "axisLine": {
+                        "show": false
+                      },
+                      "axisTick": {
+                        "show": false
+                      },
+                      "splitLine": {
+                        "lineStyle": {
+                          "type": "dashed"
+                        }
+                      }
+                    },
+                    "series": [
+                      {
+                        "type": "bar",
+                        "barWidth": 20,
+                        "label": {
+                          "show": true,
+                          "color": "#333",
+                          "position": "top"
+                        },
+                        "itemStyle": {
+                          "color": "#108cee"
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "tpl",
+                  "className": "text-sm",
+                  "inline": false,
+                  "tpl": "${summary_cost|first|pick:timestamp} ~ ${summary_cost|last|pick:timestamp} 月均 ${seriesLabel|default:总费用} ${summary_cost|pick:cost|sum|round|number} 元"
+                }
+              ],
+              "messages": {}
+            },
+            {
+              "columnClassName": "w-72",
+              "type": "form",
+              "wrapWithPanel": false,
+              "className": "px-4 ml-12",
+              "mode": "horizontal",
+              "controls": [
+                {
+                  "type": "container",
+                  "label": false,
+                  "bodyClassName": "flex flex-row items-center",
+                  "body": [
+                    {
+                      "type": "tpl",
+                      "tpl": "<span class=\"text-loud text-base\">${month|toDate:YYYY-MM|date:YYYY}年${month|toDate:YYYY-MM|date:MM}月</span>"
+                    }
+                  ]
+                },
+                {
+                  "label": "总费用",
+                  "type": "static",
+                  "labelClassName": "text-muted",
+                  "tpl": "<span class=\"text-primary\"><span class=\"text-lg\">${total|round|number}</span>元</span><br /> =",
+                  "inputClassName": "text-right",
+                  "className": "mb-0"
+                },
+                {
+                  "label": "百度云",
+                  "labelClassName": "text-muted",
+                  "type": "static",
+                  "tpl": "<span class=\"text-base\">${cash|number}</span>元<br /> +",
+                  "inputClassName": "text-right",
+                  "className": "mb-0",
+                  "name": "baidu"
+                },
+                {
+                  "label": "金山云",
+                  "type": "static",
+                  "tpl": "<span class=\"text-base\">${giftCash|number}</span>元<br /> +",
+                  "labelClassName": "text-muted",
+                  "inputClassName": "text-right",
+                  "className": "mb-0",
+                  "name": "ksy"
+                },
+                {
+                  "label": "腾讯云",
+                  "type": "static",
+                  "tpl": "<span class=\"text-base\">${voucherCash|number}</span>元<br /> +",
+                  "inputClassName": "text-right",
+                  "labelClassName": "text-muted",
+                  "name": "tencent"
+                },
+                {
+                  "label": "其他厂商",
+                  "type": "static",
+                  "tpl": "<span class=\"text-base\">${voucherCash|number}</span>元",
+                  "inputClassName": "text-right",
+                  "labelClassName": "text-muted",
+                  "name": "other"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "panel",
+      "title": "",
+      "body": [
+        {
+          "type": "tpl",
+          "inline": false,
+          "className": "mb-4",
+          "tpl": "<span class=\"text-loud text-base\">${month|toDate:YYYY-MM|date:YYYY}年${month|toDate:YYYY-MM|date:MM}月 账单汇总</span> <span class=\"text-muted text-sm\">单位：元</span>"
+        },
+        {
+          "type": "tabs",
+          "tabsMode": "tiled",
+          "tabs": [
+            {
+              "title": "按 产品 汇总",
+              "mountOnEnter": true,
+              "unmountOnExit": true,
+              "body": [
+                {
+                  "type": "service",
+                  "api": {
+                    "method": "get",
+                    "url": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/chart/detail2?month=${month}&groupBy=a",
+                    "sendOn": "this.month"
+                  },
+                  "body": [
+                    {
+                      "type": "chart",
+                      "trackExpression": "${detail_cost|json}",
+                      "config": {
+                        "legend": {
+                          "type": "scroll",
+                          "orient": "vertical",
+                          "right": "25%",
+                          "top": 90,
+                          "bottom": 20,
+                          "formatter": "{name} ",
+                          "align": "left"
+                        },
+                        "tooltip": {},
+                        "dataset": {
+                          "dimensions": ["product", "total"],
+                          "source": "${detail_cost|default:[]}"
+                        },
+                        "series": [
+                          {
+                            "name": "访问来源",
+                            "type": "pie",
+                            "right": "40%",
+                            "radius": ["50%", "70%"],
+                            "avoidLabelOverlap": false,
+                            "label": {
+                              "show": false,
+                              "position": "center"
+                            },
+                            "labelLine": {
+                              "show": false
+                            }
+                          }
+                        ]
+                      },
+                      "_mode": "1"
+                    },
+                    {
+                      "type": "pagination-wrapper",
+                      "inputName": "detail_cost",
+                      "body": [
+                        {
+                          "type": "table",
+                          "columnsTogglable": false,
+                          "source": "${detail_cost}",
+                          "columns": [
+                            {
+                              "label": "产品名称",
+                              "name": "product"
+                            },
+                            {
+                              "label": "金山云",
+                              "name": "cash",
+                              "tpl": "${cash|number}元",
+                              "placeholder": "-"
+                            },
+                            {
+                              "label": "百度云",
+                              "name": "giftCash",
+                              "tpl": "${giftCash|number}元"
+                            },
+                            {
+                              "label": "腾讯云",
+                              "name": "voucherCash",
+                              "tpl": "${voucherCash|number}元"
+                            },
+                            {
+                              "label": "其他厂商",
+                              "name": "voucherCash",
+                              "tpl": "${voucherCash|number}元"
+                            },
+                            {
+                              "label": "总费用",
+                              "name": "total",
+                              "tpl": "<%= number(this.total)%>元  <span class=\"ml-4 inline-block w-10 <%= this.diff >= 0 ? \"text-danger\" : \"text-success\"%>\"><%= this.diff >= 0 ? \"↑\" : \"↓\"%><%= round(abs(this.diff) * 100)%></span>",
+                              "remark": "此产品在所有云厂商产生的总账单",
+                              "type": "tpl",
+                              "placeholder": "-"
+                            },
+                            {
+                              "label": "费用趋势",
+                              "name": "sparkData",
+                              "type": "sparkline",
+                              "height": 30,
+                              "placeholder": "-",
+                              "popOver": {
+                                "trigger": "hover",
+                                "showIcon": false,
+                                "body": {
+                                  "type": "chart",
+                                  "config": {
+                                    "legend": {
+                                      "right": 0
+                                    },
+                                    "grid": {
+                                      "left": 80,
+                                      "right": 0
+                                    },
+                                    "dataset": {
+                                      "dimensions": [
+                                        "timestamp",
+                                        "total",
+                                        "cash"
+                                      ],
+                                      "source": "${items|default:[]}"
+                                    },
+                                    "xAxis": {
+                                      "type": "category",
+                                      "axisTick": {
+                                        "show": false
+                                      },
+                                      "axisLine": {
+                                        "show": false
+                                      }
+                                    },
+                                    "yAxis": {
+                                      "type": "value",
+                                      "axisLine": {
+                                        "show": false
+                                      },
+                                      "axisTick": {
+                                        "show": false
+                                      },
+                                      "splitLine": {
+                                        "lineStyle": {
+                                          "type": "dashed"
+                                        }
+                                      }
+                                    },
+                                    "series": [
+                                      {
+                                        "type": "line",
+                                        "name": "总费用"
+                                      },
+                                      {
+                                        "type": "line",
+                                        "name": "现金支付"
+                                      }
+                                    ],
+                                    "title": {
+                                      "text": "${product}",
+                                      "textStyle": {
+                                        "fontSize": 14
+                                      }
+                                    }
+                                  },
+                                  "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/chart/detail3?month=${month}"
+                                },
+                                "position": "left-bottom-right-bottom",
+                                "className": "w-xxxl"
+                              }
+                            }
+                          ]
+                        }
+                      ],
+                      "outputName": "detail_cost"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "title": "按 云厂商 汇总",
+              "body": [
+                {
+                  "type": "service",
+                  "api": {
+                    "method": "get",
+                    "url": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/chart/detail2?month=${month}&groupBy=a",
+                    "sendOn": "this.month"
+                  },
+                  "body": [
+                    {
+                      "type": "chart",
+                      "trackExpression": "${detail_cost|json}",
+                      "config": {
+                        "legend": {
+                          "type": "scroll",
+                          "orient": "vertical",
+                          "verticalAlign": "center",
+                          "right": 10,
+                          "top": 20,
+                          "bottom": 20,
+                          "formatter": "{name} "
+                        },
+                        "tooltip": {},
+                        "dataset": {
+                          "dimensions": ["product", "total"],
+                          "source": "${detail_cost|default:[]}"
+                        },
+                        "series": [
+                          {
+                            "name": "访问来源",
+                            "type": "pie",
+                            "right": "50%",
+                            "radius": ["50%", "70%"],
+                            "avoidLabelOverlap": false,
+                            "label": {
+                              "show": false,
+                              "position": "center"
+                            },
+                            "labelLine": {
+                              "show": false
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "table",
+                      "columnsTogglable": false,
+                      "source": "${detail_cost}",
+                      "columns": [
+                        {
+                          "label": "云厂商",
+                          "name": "product",
+                          "placeholder": "-"
+                        },
+                        {
+                          "label": "产品名称",
+                          "name": "cash",
+                          "tpl": "${cash|number}元",
+                          "placeholder": "-"
+                        },
+                        {
+                          "label": "产品详情",
+                          "name": "giftCash",
+                          "tpl": "${giftCash|number}元"
+                        },
+                        {
+                          "label": "总费用",
+                          "name": "total",
+                          "tpl": "<%= number(this.total)%>元  <span class=\"ml-4 inline-block w-10 <%= this.diff >= 0 ? \"text-danger\" : \"text-success\"%>\"><%= this.diff >= 0 ? \"↑\" : \"↓\"%><%= round(abs(this.diff) * 100)%></span>",
+                          "remark": "此产品在所有云厂商产生的总账单",
+                          "type": "tpl",
+                          "placeholder": "-"
+                        },
+                        {
+                          "label": "费用趋势",
+                          "name": "sparkData",
+                          "type": "sparkline",
+                          "height": 30
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "mountOnEnter": true,
+              "unmountOnExit": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "initApi": {
+    "method": "get",
+    "url": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/chart/detail",
+    "data": {
+      "month": "${month}"
+    },
+    "sendOn": "this.month"
+  },
+  "name": "mainPage",
+  "toolbar": [
+    {
+      "type": "tpl",
+      "tpl": "账单概览",
+      "inline": false,
+      "className": "text-md text-loud"
+    },
+    {
+      "type": "form",
+      "title": "表单",
+      "controls": [
+        {
+          "label": "",
+          "type": "month",
+          "name": "month",
+          "inline": true,
+          "value": "+0month",
+          "inputFormat": "YYYY-MM",
+          "format": "YYYY-MM",
+          "className": "m-b-none",
+          "closeOnSelect": true,
+          "clearable": false
+        }
+      ],
+      "wrapWithPanel": false,
+      "mode": "inline",
+      "className": "",
+      "target": "mainPage",
+      "submitOnChange": true,
+      "submitOnInit": true
+    }
+  ],
+  "messages": {},
+  "toolbarClassName": "flex flex-row items-center px-6 pt-4",
+  "headerClassName": "flex-grow-0"
+}
