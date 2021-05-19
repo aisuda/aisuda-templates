@@ -4,7 +4,8 @@ const path = require('path');
 const reload = require('reload');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-const {createProxyMiddleware} = require('http-proxy-middleware');
+
+const mockRoute = require('./router');
 
 const app = express();
 
@@ -14,11 +15,9 @@ app.use(bodyParser.json()); // Parses json, multi-part (file), url-encoded
 
 app.use('/public', express.static('public'));
 app.use('/pages', express.static('pages'));
+app.use('/static', express.static('static'));
 
-app.use(
-  '/api',
-  createProxyMiddleware({target: 'http://localhost:8888', changeOrigin: true})
-);
+app.use('/api', mockRoute);
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'index.html'));

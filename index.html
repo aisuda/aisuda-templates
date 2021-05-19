@@ -35,6 +35,7 @@
     <script>
       (function () {
         let amis = amisRequire('amis/embed');
+        // let axios = amisRequire('axios');
 
         const app = {
           type: 'app',
@@ -94,6 +95,22 @@
           app,
           {},
           {
+            responseAdaptor(api, response, query, request) {
+              if (/\/pages\/(.*?)\/schema.json/.test(request.url)) {
+                try {
+                  return JSON.parse(
+                    JSON.stringify(response).replace(
+                      /<template_path>/g,
+                      `/api/pages/${RegExp.$1}`
+                    )
+                  );
+                } catch (error) {
+                  return response;
+                }
+              }
+
+              return response;
+            },
             watchRouteChange: fn => {
               window.addEventListener('hashchange', fn);
               return () => {
@@ -101,17 +118,21 @@
               };
             },
             updateLocation: (to, replace) => {
-            if (to === 'goBack') {
-              return window.history.back();
-            }
+              if (to === 'goBack') {
+                return window.history.back();
+              }
 
-            if (replace && window.history.replaceState) {
-              window.history.replaceState('', document.title, normalizeLink(to));
-              return;
-            }
+              if (replace && window.history.replaceState) {
+                window.history.replaceState(
+                  '',
+                  document.title,
+                  normalizeLink(to)
+                );
+                return;
+              }
 
-            window.history.pushState('', document.title, normalizeLink(to));
-          },
+              window.history.pushState('', document.title, normalizeLink(to));
+            },
             jumpTo: to => {
               location.hash = to;
             },

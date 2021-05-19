@@ -9,12 +9,16 @@
       "target": "crud",
       "type": "button",
       "className": "pull-right"
+    },
+    {
+      "type": "tpl",
+      "tpl": "<template_path>"
     }
   ],
   "body": {
     "type": "crud",
     "name": "crud",
-    "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/crud/card",
+    "api": "<template_path>/list",
     "syncLocation": false,
     "draggable": false,
     "mode": "cards",

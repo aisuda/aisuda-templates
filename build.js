@@ -2,16 +2,16 @@ const fs = require('fs');
 const JSZip = require('jszip');
 const zip = new JSZip();
 
-const templateMap = JSON.parse(fs.readFileSync(`template-map.json`).toString());
+const config = JSON.parse(fs.readFileSync(`config.json`).toString());
 
-for (const template of templateMap) {
-  const content = fs.readFileSync(template.schemaPath).toString();
+for (const item of config) {
+  const content = fs.readFileSync(item.schemaPath).toString();
 
   zip.file(
-    `${template.name}.json`,
+    `${item.name}.json`,
     JSON.stringify({
-      tags: template.tags,
-      description: template.description,
+      tags: item.tags,
+      description: item.description,
       schema: content
     })
   );

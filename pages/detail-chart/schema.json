@@ -14,7 +14,7 @@
               "name": "mainChart",
               "api": {
                 "method": "get",
-                "url": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/chart/sample?month=${month}&range=${range}&series=${series}",
+                "url": "<template_path>/chart1?month=${month}&range=${range}&series=${series}",
                 "sendOn": "this.range && this.series && this.month"
               },
               "body": [
@@ -261,7 +261,7 @@
                   "type": "service",
                   "api": {
                     "method": "get",
-                    "url": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/chart/detail2?month=${month}&groupBy=a",
+                    "url": "<template_path>/chart2?month=${month}&groupBy=a",
                     "sendOn": "this.month"
                   },
                   "body": [
@@ -411,7 +411,7 @@
                                       }
                                     }
                                   },
-                                  "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/chart/detail3?month=${month}"
+                                  "api": "<template_path>/chart3?month=${month}"
                                 },
                                 "position": "left-bottom-right-bottom",
                                 "className": "w-xxxl"
@@ -433,7 +433,7 @@
                   "type": "service",
                   "api": {
                     "method": "get",
-                    "url": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/chart/detail2?month=${month}&groupBy=a",
+                    "url": "<template_path>/chart2?month=${month}&groupBy=a",
                     "sendOn": "this.month"
                   },
                   "body": [
@@ -523,7 +523,7 @@
   ],
   "initApi": {
     "method": "get",
-    "url": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/chart/detail",
+    "url": "<template_path>/chart4",
     "data": {
       "month": "${month}"
     },

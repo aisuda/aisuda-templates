@@ -6,7 +6,7 @@
   "body": {
     "type": "crud",
     "name": "crud",
-    "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/crud/table3",
+    "api": "<template_path>/list",
     "draggable": true,
     "filterTogglable": true,
     "keepItemSelectionOnPageChange": true,
@@ -62,7 +62,7 @@
       {
         "label": "批量删除",
         "actionType": "ajax",
-        "api": "delete:https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample/${ids|raw}",
+        "api": "delete:/api/mock/sample/${ids|raw}",
         "confirmText": "确定要删除选中数据?"
       },
       {
@@ -73,7 +73,7 @@
           "name": "sample-bulk-edit",
           "body": {
             "type": "form",
-            "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample/bulkUpdate2",
+            "api": "/api/mock/sample/bulkUpdate2",
             "controls": [
               {
                 "type": "hidden",
@@ -89,8 +89,8 @@
         }
       }
     ],
-    "quickSaveApi": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample/bulkUpdate",
-    "quickSaveItemApi": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample/$id",
+    "quickSaveApi": "/api/mock/sample/bulkUpdate",
+    "quickSaveItemApi": "/api/mock/sample/$id",
     "headerToolbar": [
       "drag-toggler",
       {
@@ -104,7 +104,7 @@
           "body": {
             "type": "form",
             "name": "sample-edit-form",
-            "api": "post:https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample",
+            "api": "post:/api/mock/sample",
             "controls": [
               {
                 "type": "text",
@@ -345,7 +345,7 @@
               "size": "md",
               "body": {
                 "type": "form",
-                "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample/$id",
+                "api": "/api/mock/sample/$id",
                 "controls": [
                   {
                     "type": "static",
@@ -413,7 +413,7 @@
             "level": "link",
             "className": "text-danger",
             "confirmText": "确认删除任务<b>「${name}」</b>?",
-            "api": "delete:https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/sample/$id"
+            "api": "delete:/api/mock/sample/$id"
           }
         ],
         "toggled": true

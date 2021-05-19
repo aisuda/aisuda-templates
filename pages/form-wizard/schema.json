@@ -7,7 +7,7 @@
       "type": "wizard",
       "mode": "horizontal",
       "actionFinishLabel": "确认",
-      "api": "https://3xsw4ap8wah59.cfc-execute.bj.baidubce.com/api/amis-mock/form/saveForm",
+      "api": "<template_path>/saveForm",
       "steps": [
         {
           "title": "填写活动信息",
@@ -25,7 +25,7 @@
               "type": "image",
               "name": "logo",
               "label": "活动 Logo",
-              "value": "https://dss0.bdstatic.com/-0U0bnSm1A5BphGlnYG/tam-ogel/a919cd5bc7ebdc30d5ea1d7e632323dc_121_121.png"
+              "value": "/static/baidu-cloud.png"
             },
 
             {
