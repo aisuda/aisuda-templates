@@ -9,10 +9,6 @@
       "target": "crud",
       "type": "button",
       "className": "pull-right"
-    },
-    {
-      "type": "tpl",
-      "tpl": "<template_path>"
     }
   ],
   "body": {
