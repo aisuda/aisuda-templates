@@ -24,6 +24,8 @@ npm start
 - `xxx.api.js/xxx.api.json`: mock api 的文件，参考已有示例
 - 其他静态资源文件
 
+请不要引用外部资源，接口和其他静态文件都放在模板目录下面，资源引用请使用 `<template_path>` 作为前缀比如 `<template_path>/xxx.jpeg`
+
 ## 产出
 
 运行 `npm run build` 会打包所有模板，你也可以单独打包特定模板
