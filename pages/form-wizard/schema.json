@@ -24,8 +24,7 @@
             {
               "type": "image",
               "name": "logo",
-              "label": "活动 Logo",
-              "value": "/static/baidu-cloud.png"
+              "label": "活动 Logo"
             },
 
             {
