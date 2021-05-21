@@ -96,17 +96,23 @@
           {},
           {
             responseAdaptor(api, response, query, request) {
-              if (/\/pages\/(.*?)\/schema.json/.test(request.url)) {
-                try {
-                  return JSON.parse(
-                    JSON.stringify(response).replace(
-                      /<template_path>/g,
-                      `/api/pages/${RegExp.$1}`
-                    )
+              try {
+                let str = JSON.stringify(response);
+
+                if (/\/pages\/(.*?)\/schema.json/.test(request.url)) {
+                  str = str.replace(
+                    /<template_path>/g,
+                    `/api/pages/${RegExp.$1}`
                   );
-                } catch (error) {
-                  return response;
                 }
+
+                if (/\/api\/pages\/(.*?)\/.*/.test(request.url)) {
+                  str = str.replace(/<template_path>/g, `/pages/${RegExp.$1}`);
+                }
+
+                return JSON.parse(str);
+              } catch (error) {
+                return response;
               }
 
               return response;
