@@ -99,7 +99,7 @@
               try {
                 let str = JSON.stringify(response);
 
-                if (/\/pages\/(.*?)\/schema.json/.test(request.url)) {
+                if (/pages\/(.*?)\/schema.json/.test(request.url)) {
                   str = str.replace(
                     /<template_path>/g,
                     `/api/pages/${RegExp.$1}`

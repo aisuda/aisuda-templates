@@ -19,7 +19,7 @@
               {
                 "label": "分析页",
                 "url": "/dashbord/chart",
-                "schemaApi": "get:/pages/dashboard-chart/schema.json"
+                "schemaApi": "get:pages/dashboard-chart/schema.json"
               }
             ]
           },
@@ -31,12 +31,12 @@
               {
                 "label": "查询列表",
                 "url": "/crud/table",
-                "schemaApi": "get:/pages/crud-table/schema.json"
+                "schemaApi": "get:pages/crud-table/schema.json"
               },
               {
                 "label": "卡片列表",
                 "url": "/crud/card",
-                "schemaApi": "get:/pages/crud-card/schema.json"
+                "schemaApi": "get:pages/crud-card/schema.json"
               }
             ]
           },
@@ -48,7 +48,7 @@
               {
                 "label": "普通表单",
                 "url": "/form/basic",
-                "schemaApi": "get:/pages/form-basic/schema.json"
+                "schemaApi": "get:pages/form-basic/schema.json"
               },
               {
                 "label": "高级表单",
@@ -58,7 +58,7 @@
               {
                 "label": "分步表单",
                 "url": "/form/wizard",
-                "schemaApi": "get:/pages/form-wizard/schema.json"
+                "schemaApi": "get:pages/form-wizard/schema.json"
               }
             ]
           },
@@ -70,12 +70,12 @@
               {
                 "label": "普通详情",
                 "url": "/detail/basic",
-                "schemaApi": "get:/pages/detail-basic/schema.json"
+                "schemaApi": "get:pages/detail-basic/schema.json"
               },
               {
                 "label": "图表详情",
                 "url": "/detail/chart",
-                "schemaApi": "get:/pages/detail-chart/schema.json"
+                "schemaApi": "get:pages/detail-chart/schema.json"
               }
             ]
           }
