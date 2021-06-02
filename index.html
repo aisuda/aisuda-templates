@@ -107,7 +107,7 @@
                 }
 
                 if (/\/api\/pages\/(.*?)\/.*/.test(request.url)) {
-                  str = str.replace(/<template_path>/g, `/pages/${RegExp.$1}`);
+                  str = str.replace(/<template_path>/g, `pages/${RegExp.$1}`);
                 }
 
                 return JSON.parse(str);
